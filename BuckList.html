@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bucklist</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        header {
+            text-align: center;
+            padding: 0px;
+            margin: 0px;
+            align-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f58325, #fc4e1a);
+            border-radius: 10px;
+        }
+        fieldset {
+            border-color: crimson;
+            border-radius: 10px;
+            align-items: center;
+            
+        }
+        
+    </style>
+    <script>
+        let movies = [];
+
+        function updatemoviecount() {
+            document.getElementById('movie-count').textContent = `Total movies added: ${movies.length}`;
+        }
+
+        function updatemovielist() {
+            document.getElementById('movie-list').innerHTML = '';
+            movies.forEach((movie, index) => {
+                const li = document.createElement('li');
+                li.textContent = movie;
+                li.onclick = () => removemovie(index);
+                document.getElementById('movie-list').appendChild(li);
+            });
+            updatemoviecount();
+        }
+
+        function addmovie() {
+            const movieinput = document.getElementById('movie-input');
+            if (movieinput.value.trim() !== '') {
+                movies.push(movieinput.value.trim());
+                movieinput.value = '';
+                updatemovielist();
+            }
+        }
+
+        function removemovie(index) {
+            movies.splice(index, 1);
+            updatemovielist();
+        }
+
+        function clearlist() {
+            movies = [];
+            updatemovielist();
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1 style="font-family: 'Courier New', Courier, monospace;">BuckList</h1>
+    </header>
+    <fieldset>
+    <h3>
+        Save your favourite movies at one place!
+    </h3>
+    <img src="interstellar.jpg" alt="ïnterstellar" width="300px" height="200px" style="border-radius: 5px;">
+    <img src="salaar.jpg" alt="salaar" width="400px" height="200px" style="border-radius: 5px;">
+    <div class="movie-form">
+        <input type="text" id="movie-input" placeholder="Add a movie">
+        <button onclick="addmovie()">Add</button>
+    </div>
+    <ul id="movie-list"></ul>
+    <button class="clear-button" onclick="clearlist()">Clear List</button>
+    <div class="movie-count" id="movie-count"></div>
+</fieldset>
+</body>
+</html>
