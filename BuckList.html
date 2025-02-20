@@ -3,27 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bucklist</title>
+    <title>BuckList - Movie Collection</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
         body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        header {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #120d31, #1b0034);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
             text-align: center;
-            padding: 0px;
-            margin: 0px;
-            align-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #f58325, #fc4e1a);
+        }
+
+        header {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom: 2px solid #ff6fff;
+            box-shadow: 0px 4px 20px rgba(255, 0, 255, 0.2);
+            backdrop-filter: blur(10px);
             border-radius: 10px;
         }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #ff6fff;
+            text-shadow: 0px 0px 10px rgba(255, 105, 255, 0.8);
+        }
+
         fieldset {
-            border-color: crimson;
-            border-radius: 10px;
-            align-items: center;
-            
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            width: 60%;
+            margin: 20px auto;
+            box-shadow: 0px 4px 25px rgba(255, 0, 255, 0.2);
+            backdrop-filter: blur(15px);
         }
-        
+
+        img {
+            border-radius: 10px;
+            margin: 10px;
+            transition: transform 0.3s ease-in-out, filter 0.3s;
+        }
+
+        img:hover {
+            transform: scale(1.08);
+            filter: brightness(1.2);
+        }
+
+        .movie-form input {
+            padding: 12px;
+            width: 60%;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            font-size: 1em;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+
+        .movie-form input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        button {
+            padding: 12px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #ff00ff, #8000ff);
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.4);
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #8000ff, #ff00ff);
+            transform: scale(1.05);
+            box-shadow: 0px 0px 25px rgba(255, 0, 255, 0.6);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background: rgba(255, 255, 255, 0.2);
+            margin: 8px;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: all 0.3s ease-in-out;
+            backdrop-filter: blur(8px);
+        }
+
+        ul li:hover {
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0px 0px 10px rgba(255, 0, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        .movie-count {
+            font-size: 1.2em;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #ff6fff;
+            text-shadow: 0px 0px 10px rgba(255, 105, 255, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            fieldset {
+                width: 90%;
+            }
+
+            .movie-form input {
+                width: 75%;
+            }
+        }
     </style>
     <script>
         let movies = [];
@@ -65,21 +173,19 @@
 </head>
 <body>
     <header>
-        <h1 style="font-family: 'Courier New', Courier, monospace;">BuckList</h1>
+        <h1>BuckList</h1>
     </header>
     <fieldset>
-    <h3>
-        Save your favourite movies at one place!
-    </h3>
-    <img src="interstellar.jpg" alt="ïnterstellar" width="300px" height="200px" style="border-radius: 5px;">
-    <img src="salaar.jpg" alt="salaar" width="400px" height="200px" style="border-radius: 5px;">
-    <div class="movie-form">
-        <input type="text" id="movie-input" placeholder="Add a movie">
-        <button onclick="addmovie()">Add</button>
-    </div>
-    <ul id="movie-list"></ul>
-    <button class="clear-button" onclick="clearlist()">Clear List</button>
-    <div class="movie-count" id="movie-count"></div>
-</fieldset>
+        <h3>Save your favourite movies at one place!</h3>
+        <img src="interstellar.jpg" alt="Interstellar" width="300px" height="200px">
+        <img src="salaar.jpg" alt="Salaar" width="400px" height="200px">
+        <div class="movie-form">
+            <input type="text" id="movie-input" placeholder="Add a movie">
+            <button onclick="addmovie()">Add</button>
+        </div>
+        <ul id="movie-list"></ul>
+        <button class="clear-button" onclick="clearlist()">Clear List</button>
+        <div class="movie-count" id="movie-count"></div>
+    </fieldset>
 </body>
 </html>
